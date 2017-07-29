@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LineChat</title>
+    <%= csrf_meta_tags %>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css" />
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

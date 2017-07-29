@@ -1,0 +1,40 @@
+<section>
+ 
+  <div class="chat">
+    <ul>
+      <% @chats.each do |chat| %>
+
+      <li class="<%= chat.user %>">
+        <a class="user" href="#">
+          <% if chat.user == 'bot' then %>
+          <img alt="" src="https://s3.amazonaws.com/uifaces/faces/twitter/toffeenutdesign/128.jpg" />
+        <% else %>
+          <img alt="" src="https://s3.amazonaws.com/uifaces/faces/twitter/igorgarybaldi/128.jpg" />
+          <% end %>
+          </a>
+        <div class="date">
+          <%= time_ago_in_words chat.created_at.strftime('%Y/%m/%d') %>
+        </div>
+        <div class="message">
+          <div class="hider">
+            <span>Click to read</span>
+          </div>
+          <p>
+            <%= chat.message %>
+          </p>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+    <div id="new-massage">
+      <%= form_with model:@new_message, local:true do |form| %>
+      <%= form.text_area :message %>
+      <%= form.hidden_field :user,:value=>'you' %>
+      <%= form.submit '送信',:class => 'btn submit'%>
+      <% end %>
+    </div>
+    <div id="delete-massages">
+      <p><%= link_to "全てのメッセージを削除" , "/chats", method: :delete %></p>
+    </div>
+  </div>
+</section>
